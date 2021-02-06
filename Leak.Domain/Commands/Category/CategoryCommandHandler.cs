@@ -11,7 +11,8 @@ namespace Leak.Domain.Commands.Category
 {
     public class CategoryCommandHandler : CommandHandler,
         IRequestHandler<CreateCategoryCommand, ValidationResult>,
-        IRequestHandler<DeleteCategoryCommand, ValidationResult>
+        IRequestHandler<DeleteCategoryCommand, ValidationResult>,
+        IRequestHandler<UpdateCategoryCommand, ValidationResult>
     {
         public Task<ValidationResult> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
         {
@@ -19,6 +20,11 @@ namespace Leak.Domain.Commands.Category
         }
 
         public Task<ValidationResult> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ValidationResult> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
