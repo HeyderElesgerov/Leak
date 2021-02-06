@@ -5,7 +5,7 @@ using FluentValidation;
 
 namespace Leak.Domain.Core.Command
 {
-    public abstract class CommandValidator : AbstractValidator<Command>
+    public abstract class CommandValidator<TCommand> : AbstractValidator<TCommand> where TCommand : Command
     {
     }
 }
