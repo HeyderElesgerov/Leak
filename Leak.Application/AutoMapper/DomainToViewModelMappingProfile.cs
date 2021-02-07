@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Leak.Application.AutoMapper
 {
-    class DomainToViewModelMappingProfile : Profile
+    public class DomainToViewModelMappingProfile : Profile
     {
         public DomainToViewModelMappingProfile()
         {
