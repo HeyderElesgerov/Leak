@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leak.Application", "Leak.Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leak.Infrastructure.Data", "Leak.Infrastructure.Data\Leak.Infrastructure.Data.csproj", "{0B08283D-BA6F-4CEA-A34B-80A10CB7DD9F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leak.Infrastructure.IoC", "Leak.Infrastructure.IoC\Leak.Infrastructure.IoC.csproj", "{2B51155B-D838-4069-A290-EA6F3A9566F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{0B08283D-BA6F-4CEA-A34B-80A10CB7DD9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B08283D-BA6F-4CEA-A34B-80A10CB7DD9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B08283D-BA6F-4CEA-A34B-80A10CB7DD9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B51155B-D838-4069-A290-EA6F3A9566F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B51155B-D838-4069-A290-EA6F3A9566F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B51155B-D838-4069-A290-EA6F3A9566F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B51155B-D838-4069-A290-EA6F3A9566F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
