@@ -10,5 +10,11 @@ namespace Leak.Domain.Commands.Category
         public int Id { get; set; }
 
         public string CategoryTitle { get; set; }
+
+        public CategoryCommand(int id, string title)
+        {
+            Id = id;
+            CategoryTitle = title;
+        }
     }
 }

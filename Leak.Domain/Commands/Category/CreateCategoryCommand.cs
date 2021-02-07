@@ -7,6 +7,10 @@ namespace Leak.Domain.Commands.Category
 {
     public class CreateCategoryCommand : CategoryCommand
     {
+        public CreateCategoryCommand(string title) : base(default(int), title)
+        {
+        }
+
         public override bool IsValid()
         {
             ValidationResult = new CreateCategoryValidator().Validate(this);
