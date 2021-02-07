@@ -11,6 +11,14 @@ namespace Leak.Application.AutoMapper
     {
         public ViewModelToDomainMappingProfile()
         {
+            CreateMap<CategoryViewModel, CreateCategoryCommand>()
+                .ConvertUsing(c => new CreateCategoryCommand(c.Title));
+
+            CreateMap<CategoryViewModel, UpdateCategoryCommand>()
+                .ConvertUsing(c => new UpdateCategoryCommand(c.Id, c.Title));
+
+            CreateMap<CategoryViewModel, DeleteCategoryCommand>()
+                .ConvertUsing(c => new DeleteCategoryCommand(c.Id));
         }
     }
 }
