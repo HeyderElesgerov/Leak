@@ -1,5 +1,6 @@
 ﻿using FluentValidation.Results;
 using Leak.Domain.Core.Command;
+using Leak.Domain.Repository;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -16,19 +17,63 @@ namespace Leak.Domain.Commands.Url
         IRequestHandler<DeleteUrlCommand, ValidationResult>,
         IRequestHandler<UpdateUrlCommand, ValidationResult>
     {
-        public Task<ValidationResult> Handle(CreateUrlCommand request, CancellationToken cancellationToken)
+        private readonly IUrlRepository _urlRepository;
+
+        public UrlCommandHandler(IUrlRepository urlRepository)
         {
-            throw new NotImplementedException();
+            _urlRepository = urlRepository;
         }
 
-        public Task<ValidationResult> Handle(DeleteUrlCommand request, CancellationToken cancellationToken)
+        public async Task<ValidationResult> Handle(CreateUrlCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            if (!request.IsValid())
+                return request.ValidationResult;
+
+            await _urlRepository.Add(new Models.Url(request.Path));
+            await _urlRepository.Commit();
+
+            return ValidationResult;
         }
 
-        public Task<ValidationResult> Handle(UpdateUrlCommand request, CancellationToken cancellationToken)
+        public async Task<ValidationResult> Handle(DeleteUrlCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            if (!request.IsValid())
+                return request.ValidationResult;
+
+            var url = _urlRepository.Find(request.Id);
+
+            if(url == null)
+            {
+                AddError("Url not found");
+            }
+            else
+            {
+                await _urlRepository.Delete(url);
+                await _urlRepository.Commit();
+            }
+
+            return ValidationResult;
+        }
+
+        public async Task<ValidationResult> Handle(UpdateUrlCommand request, CancellationToken cancellationToken)
+        {
+            if (!request.IsValid())
+                return request.ValidationResult;
+
+            var url = _urlRepository.Find(request.Id);
+
+            if (url == null)
+            {
+                AddError("Url not found");
+            }
+            else
+            {
+                url.Path = request.Path;
+                _urlRepository.Update(url);
+                await _urlRepository.Commit();
+            }
+
+            return ValidationResult;
         }
     }
 }

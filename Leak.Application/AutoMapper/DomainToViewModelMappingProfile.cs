@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Leak.Application.ViewModels.Blog;
 using Leak.Application.ViewModels.Category;
 using Leak.Application.ViewModels.Url;
 using Leak.Domain.Models;
@@ -18,6 +19,10 @@ namespace Leak.Application.AutoMapper
 
             CreateMap<Url, UrlViewModel>()
                 .ConstructUsing(u => new UrlViewModel(u.Id, u.Path));
+
+            CreateMap<Blog, BlogViewModel>()
+                .ConstructUsing(b => new BlogViewModel(
+                    b.Id, b.Title, new UrlViewModel(b.UrlId, b.Url.Path)));
         }
     }
 }

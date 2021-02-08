@@ -11,5 +11,16 @@ namespace Leak.Domain.Models
 
         public int UrlId { get; set; }
         public Url Url { get; set; }
+
+        public List<Post> Posts { get; set; }
+
+        public Blog()
+        {
+        }
+
+        public Blog(string title, Url url)
+        {
+            Title = title;
+        }
     }
 }
