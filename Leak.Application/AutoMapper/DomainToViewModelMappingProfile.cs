@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Leak.Application.ViewModels.Category;
+using Leak.Application.ViewModels.Url;
 using Leak.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,9 @@ namespace Leak.Application.AutoMapper
         {
             CreateMap<Category, CategoryViewModel>()
                 .ConstructUsing(c => new CategoryViewModel(c.Id, c.Title));
+
+            CreateMap<Url, UrlViewModel>()
+                .ConstructUsing(u => new UrlViewModel(u.Id, u.Path));
         }
     }
 }
