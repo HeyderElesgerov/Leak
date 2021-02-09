@@ -68,7 +68,7 @@ namespace Leak.Domain.Commands.Url
             }
             else
             {
-                url.Path = request.Path;
+                url.ChangePath(request.Path);
                 _urlRepository.Update(url);
                 await _urlRepository.Commit();
             }

@@ -22,5 +22,10 @@ namespace Leak.Domain.Models
         public Url(string path) : this(0, path)
         {
         }
+
+        public void ChangePath(string newPath)
+        {
+            Path = newPath;
+        }
     }
 }

@@ -27,5 +27,32 @@ namespace Leak.Domain.Models
         public DateTime DatePublished { get; set; }
 
         public bool IsActive { get; set; }
+
+
+
+        public void ChangeTitle(string newTitle)
+        {
+            Title = newTitle;
+        }
+
+        public void ChangeContent(string content)
+        {
+            Content = content;
+        }
+
+        public void ChangePhotoFileName(string photoFileName)
+        {
+            HeaderPhotoFileName = photoFileName;
+        }
+
+        public void IncreaseReadingCount()
+        {
+            ReadingCount++;
+        }
+
+        public void ChangeActivityState()
+        {
+            IsActive = IsActive ? false : true;
+        }
     }
 }
