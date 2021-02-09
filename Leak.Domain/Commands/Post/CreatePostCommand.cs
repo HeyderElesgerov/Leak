@@ -10,6 +10,10 @@ namespace Leak.Domain.Commands.Post
 {
     public class CreatePostCommand : PostCommand
     {
+        public CreatePostCommand()
+        {
+        }
+
         public CreatePostCommand(string title, string content, string headerPhotoName, string urlPath, int blogId, int categoryId, bool isActive) 
             : base(title, content, headerPhotoName, blogId, categoryId, isActive)
         {

@@ -1,13 +1,6 @@
-﻿using Leak.Domain.Core.Command;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Leak.Domain.Commands.Post
+﻿namespace Leak.Application.ViewModels.Post
 {
-    public abstract class PostCommand : Command
+    public class CreatePostViewModel
     {
         public string Title { get; set; }
         public string Content { get; set; }
@@ -15,12 +8,10 @@ namespace Leak.Domain.Commands.Post
         public int BlogId { get; set; }
         public int CategoryId { get; set; }
         public bool IsActive { get; set; }
+        public string UrlPath { get; set; }
 
-        public PostCommand()
-        {
-        }
-
-        public PostCommand(string title, string content, string headerPhotoName, int blogId, int categoryId, bool isActive)
+        public CreatePostViewModel(
+            string title, string content, string headerPhotoName, int blogId, int categoryId, bool isActive, string urlPath)
         {
             Title = title;
             Content = content;
@@ -28,6 +19,7 @@ namespace Leak.Domain.Commands.Post
             BlogId = blogId;
             CategoryId = categoryId;
             IsActive = isActive;
+            UrlPath = urlPath;
         }
     }
 }

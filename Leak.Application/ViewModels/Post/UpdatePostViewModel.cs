@@ -1,14 +1,14 @@
-﻿using Leak.Domain.Core.Command;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Leak.Domain.Commands.Post
+namespace Leak.Application.ViewModels.Post
 {
-    public abstract class PostCommand : Command
+    public class UpdatePostViewModel
     {
+        public int Id { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
         public string HeaderPhotoName { get; set; }
@@ -16,11 +16,12 @@ namespace Leak.Domain.Commands.Post
         public int CategoryId { get; set; }
         public bool IsActive { get; set; }
 
-        public PostCommand()
+        public UpdatePostViewModel()
         {
         }
 
-        public PostCommand(string title, string content, string headerPhotoName, int blogId, int categoryId, bool isActive)
+        public UpdatePostViewModel(
+            string title, string content, string headerPhotoName, int blogId, int categoryId, bool isActive)
         {
             Title = title;
             Content = content;
