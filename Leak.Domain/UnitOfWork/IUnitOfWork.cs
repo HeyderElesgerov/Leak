@@ -13,6 +13,8 @@ namespace Leak.Domain.UnitOfWork
         IBlogRepository BlogRepository { get; set; }
         ICategoryRepository CategoryRepository { get; set; }
         IUrlRepository UrlRepository { get; set; }
+        ISpecialPostsSectionRepository<Models.TrendPostSection> TrendingPostsSectionRepository { get; set; }
+        ISpecialPostsSectionRepository<Models.InterestingPostSection> InterestingPostsSectionRepository { get; set; }
 
         Task Commit();
     }
