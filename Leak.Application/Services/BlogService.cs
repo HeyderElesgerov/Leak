@@ -35,9 +35,9 @@ namespace Leak.Application.Services
             return await _mediator.Send(createBlogCommand);
         }
 
-        public async Task<ValidationResult> Delete(BlogViewModel blogViewModel)
+        public async Task<ValidationResult> Delete(int id)
         {
-            DeleteBlogCommand deleteCategoryCommand = _mapper.Map<DeleteBlogCommand>(blogViewModel);
+            DeleteBlogCommand deleteCategoryCommand = new DeleteBlogCommand(id);
 
             return await _mediator.Send(deleteCategoryCommand);
         }
@@ -45,7 +45,7 @@ namespace Leak.Application.Services
         public async Task<IEnumerable<BlogViewModel>> GetAll()
         {
             return _mapper.Map<IEnumerable<BlogViewModel>>(
-                await _blogRepository.GetAll());
+                await _blogRepository.GetAllIncluding(b => b.Url));
         }
     }
 }

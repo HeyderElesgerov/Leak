@@ -14,12 +14,17 @@ namespace Leak.UI.MVC
 {
     public class Startup
     {
-        public void ConfigureServices(IServiceCollection services, IWebHostEnvironment webHostEnvironment)
+        IConfiguration Configuration;
+
+        public Startup(IConfiguration configuration)
         {
-            var configuration = new ConfigurationBuilder()
-                .AddJsonFile($"appsettings.{webHostEnvironment.EnvironmentName}.json")
-                .Build();
-            NativeInjectorBootStrapper.RegisterServices(services, configuration);
+            Configuration = configuration;
+        }
+
+        public void ConfigureServices(IServiceCollection services)
+        {
+            NativeInjectorBootStrapper.RegisterServices(services, Configuration);
+
             services.AddControllersWithViews();
         }
 
