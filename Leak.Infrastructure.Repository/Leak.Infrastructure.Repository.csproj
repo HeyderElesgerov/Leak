@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Leak.Domain.Core\Leak.Domain.Core.csproj" />
+    <ProjectReference Include="..\Leak.Domain\Leak.Domain.csproj" />
+    <ProjectReference Include="..\Leak.Infrastructure.Data\Leak.Infrastructure.Data.csproj" />
+  </ItemGroup>
+
+</Project>
