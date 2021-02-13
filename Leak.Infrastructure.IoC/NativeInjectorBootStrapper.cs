@@ -9,6 +9,7 @@ using Leak.Domain.Commands.Url;
 using Leak.Domain.Models;
 using Leak.Domain.Repository;
 using Leak.Infrastructure.Data.Context;
+using Leak.Infrastructure.Repository;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -20,12 +21,12 @@ namespace Leak.Infrastructure.IoC
     {
         public static IServiceCollection WithRepositories(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddScoped<IBlogRepository>();
-            serviceCollection.AddScoped<ICategoryRepository>();
-            serviceCollection.AddScoped<IPostRepository>();
-            serviceCollection.AddScoped<ISpecialPostsSectionRepository<InterestingPostSection>>();
-            serviceCollection.AddScoped<ISpecialPostsSectionRepository<TrendPostSection>>();
-            serviceCollection.AddScoped<IUrlRepository>();
+            serviceCollection.AddScoped<IBlogRepository, BlogRepository>();
+            serviceCollection.AddScoped<ICategoryRepository, CategoryRepository>();
+            serviceCollection.AddScoped<IPostRepository, PostRepository>();
+            serviceCollection.AddScoped<ISpecialPostsSectionRepository<InterestingPostSection>, SpecialPostsSectionRepository<InterestingPostSection>>();
+            serviceCollection.AddScoped<ISpecialPostsSectionRepository<TrendPostSection>, SpecialPostsSectionRepository<TrendPostSection>>();
+            serviceCollection.AddScoped<IUrlRepository, UrlRepository>();
 
             return serviceCollection;
         }

@@ -13,6 +13,7 @@
     <ProjectReference Include="..\Leak.Application\Leak.Application.csproj" />
     <ProjectReference Include="..\Leak.Domain\Leak.Domain.csproj" />
     <ProjectReference Include="..\Leak.Infrastructure.Data\Leak.Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\Leak.Infrastructure.Repository\Leak.Infrastructure.Repository.csproj" />
   </ItemGroup>
 
 </Project>
