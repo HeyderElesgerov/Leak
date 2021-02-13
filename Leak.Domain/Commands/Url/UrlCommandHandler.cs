@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Leak.Domain.Commands.Url
 {
-    class UrlCommandHandler :
+    public class UrlCommandHandler :
         CommandHandler,
         IRequestHandler<CreateUrlCommand, ValidationResult>,
         IRequestHandler<DeleteUrlCommand, ValidationResult>,

@@ -9,6 +9,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Leak.Infrastructure.IoC;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using MediatR;
 
 namespace Leak.UI.MVC
 {
@@ -23,7 +25,12 @@ namespace Leak.UI.MVC
 
         public void ConfigureServices(IServiceCollection services)
         {
-            NativeInjectorBootStrapper.RegisterServices(services, Configuration);
+            services.AddMediatR(typeof(Startup).Assembly);
+            services
+                .WithDbContext(Configuration.GetSection("ConnectionStrings:DefaultConnection").Value)
+                .WithRepositories()
+                .WithServices()
+                .WithRequestHandlers();
 
             services.AddControllersWithViews();
         }
