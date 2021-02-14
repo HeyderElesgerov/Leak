@@ -49,6 +49,7 @@ namespace Leak.UI.MVC
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapControllers();
             });
         }
     }
