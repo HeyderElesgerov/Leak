@@ -9,12 +9,12 @@ namespace Leak.Domain.UnitOfWork
 {
     public interface IUnitOfWork : IDisposable
     {
-        IPostRepository PostRepository { get; set; }
-        IBlogRepository BlogRepository { get; set; }
-        ICategoryRepository CategoryRepository { get; set; }
-        IUrlRepository UrlRepository { get; set; }
-        ISpecialPostsSectionRepository<Models.TrendPostSection> TrendingPostsSectionRepository { get; set; }
-        ISpecialPostsSectionRepository<Models.InterestingPostSection> InterestingPostsSectionRepository { get; set; }
+        IPostRepository PostRepository { get; }
+        IBlogRepository BlogRepository { get; }
+        ICategoryRepository CategoryRepository { get; }
+        IUrlRepository UrlRepository { get; }
+        ISpecialPostsSectionRepository<Models.TrendPostSection> TrendingPostsSectionRepository { get; }
+        ISpecialPostsSectionRepository<Models.InterestingPostSection> InterestingPostsSectionRepository { get; }
 
         Task Commit();
     }

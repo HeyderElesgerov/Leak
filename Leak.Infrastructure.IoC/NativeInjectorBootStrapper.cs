@@ -9,6 +9,7 @@ using Leak.Domain.Commands.SpecialPostsSection;
 using Leak.Domain.Commands.Url;
 using Leak.Domain.Models;
 using Leak.Domain.Repository;
+using Leak.Domain.UnitOfWork;
 using Leak.Infrastructure.Data.Context;
 using Leak.Infrastructure.Repository;
 using MediatR;
@@ -26,6 +27,12 @@ namespace Leak.Infrastructure.IoC
                 typeof(ViewModelToDomainMappingProfile).Assembly);
 
             return services;
+        }
+
+        public static IServiceCollection WithUnitOfWork(this IServiceCollection serviceDescriptors)
+        {
+            serviceDescriptors.AddScoped<IUnitOfWork, UnitOfWork>();
+            return serviceDescriptors;
         }
 
         public static IServiceCollection WithRepositories(this IServiceCollection serviceCollection)

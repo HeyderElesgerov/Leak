@@ -30,6 +30,7 @@ namespace Leak.UI.MVC
                 .WithAutoMapper()
                 .WithDbContext(Configuration.GetSection("ConnectionStrings:DefaultConnection").Value)
                 .WithRepositories()
+                .WithUnitOfWork()
                 .WithServices()
                 .WithRequestHandlers();
 
