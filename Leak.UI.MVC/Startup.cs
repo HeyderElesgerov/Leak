@@ -27,6 +27,7 @@ namespace Leak.UI.MVC
         {
             services.AddMediatR(typeof(Startup).Assembly);
             services
+                .WithAutoMapper()
                 .WithDbContext(Configuration.GetSection("ConnectionStrings:DefaultConnection").Value)
                 .WithRepositories()
                 .WithServices()

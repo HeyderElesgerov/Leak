@@ -1,4 +1,5 @@
 ﻿using FluentValidation.Results;
+using Leak.Application.AutoMapper;
 using Leak.Application.Interfaces;
 using Leak.Application.Services;
 using Leak.Domain.Commands.Blog;
@@ -12,13 +13,21 @@ using Leak.Infrastructure.Data.Context;
 using Leak.Infrastructure.Repository;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Leak.Infrastructure.IoC
 {
     public static class NativeInjectorBootStrapper
     {
+        public static IServiceCollection WithAutoMapper(this IServiceCollection services)
+        {
+            services.AddAutoMapper(
+                typeof(DomainToViewModelMappingProfile).Assembly,
+                typeof(ViewModelToDomainMappingProfile).Assembly);
+
+            return services;
+        }
+
         public static IServiceCollection WithRepositories(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IBlogRepository, BlogRepository>();
