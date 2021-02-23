@@ -17,9 +17,9 @@ namespace Leak.Infrastructure.Data.Context
             builder.ApplyConfiguration(new CategoryMap());
             builder.ApplyConfiguration(new BlogMap());
             builder.ApplyConfiguration(new PostMap());
-            builder.ApplyConfiguration(new UrlMap());
             builder.ApplyConfiguration(new PostSectionMap<InterestingPostSection>());
             builder.ApplyConfiguration(new PostSectionMap<TrendPostSection>());
+            builder.ApplyConfiguration(new AppUserMap());
 
             base.OnModelCreating(builder);
         }

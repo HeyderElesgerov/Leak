@@ -1,42 +1,20 @@
-﻿using Leak.Application.ViewModels.Url;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Leak.Application.Utility;
 
 namespace Leak.Application.ViewModels.Blog
 {
     public class BlogViewModel
     {
-        public int Id { get; set; }
+        public int Id { get; private set; }
 
-        public string Title { get; set; }
+        public string Title { get; private set; }
 
-        public int UrlId { get; set; }
+        public readonly string Url;
 
-        public string UrlPath { get; set; }
-
-        public BlogViewModel(int id, string title, UrlViewModel urlViewModel)
+        public BlogViewModel(int id, string title)
         {
             Id = id;
             Title = title;
-
-            if(urlViewModel != null)
-            {
-                UrlId = urlViewModel.Id;
-                UrlPath = urlViewModel.Path;
-            }
-        }
-
-        public BlogViewModel(string title, UrlViewModel urlViewModel)
-            : this(0, title, urlViewModel)
-        {
-        }
-
-        public BlogViewModel(int id)
-            : this(id, String.Empty, default(UrlViewModel))
-        {
+            Url = ContentUrlGenerator.GenerateUrl(id, title);
         }
     }
 }

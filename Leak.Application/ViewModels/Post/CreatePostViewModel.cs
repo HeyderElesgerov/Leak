@@ -8,10 +8,9 @@
         public int BlogId { get; set; }
         public int CategoryId { get; set; }
         public bool IsActive { get; set; }
-        public string UrlPath { get; set; }
 
         public CreatePostViewModel(
-            string title, string content, string headerPhotoName, int blogId, int categoryId, bool isActive, string urlPath)
+            string title, string content, string headerPhotoName, int blogId, int categoryId, bool isActive)
         {
             Title = title;
             Content = content;
@@ -19,7 +18,6 @@
             BlogId = blogId;
             CategoryId = categoryId;
             IsActive = isActive;
-            UrlPath = urlPath;
         }
     }
 }

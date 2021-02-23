@@ -1,5 +1,6 @@
 ﻿using FluentValidation.Results;
 using Leak.Application.ViewModels.Post;
+using Leak.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

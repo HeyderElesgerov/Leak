@@ -45,8 +45,7 @@ namespace Leak.Domain.Commands.Post
             }
 
             var newPost = new Models.Post(
-                request.Title, request.Content, request.HeaderPhotoName,
-                new Models.Url(request.UrlPath), request.IsActive, blogId, categoryId);
+                request.Title, request.Content, request.HeaderPhotoName, request.IsActive, blogId, categoryId);
 
             await _unitOfWork.PostRepository.Add(newPost);
             await _unitOfWork.Commit();
@@ -85,6 +84,11 @@ namespace Leak.Domain.Commands.Post
                 post.BlogId = blogId;
                 post.CategoryId = categoryId;
 
+                if(post.IsActive != request.IsActive)
+                {
+                    post.ChangeActivityState();
+                }
+
                 await _unitOfWork.Commit();
             }
             else
@@ -102,13 +106,9 @@ namespace Leak.Domain.Commands.Post
 
             if (PostExists(request.Id))
             {
-                var post = await _unitOfWork.PostRepository
-                                            .GetFirstIncluding(request.Id, p => p.Url);
+                var post = _unitOfWork.PostRepository.Find(request.Id);
 
                 await _unitOfWork.PostRepository.Delete(post);
-
-                if (post.Url != null)
-                    await _unitOfWork.UrlRepository.Delete(post.Url);
 
                 await _unitOfWork.Commit();
             }

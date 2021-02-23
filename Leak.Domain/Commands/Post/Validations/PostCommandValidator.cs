@@ -1,10 +1,5 @@
-﻿using Leak.Domain.Core.Command;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentValidation;
+﻿using FluentValidation;
+using Leak.Domain.Core.Command;
 
 namespace Leak.Domain.Commands.Post.Validations
 {

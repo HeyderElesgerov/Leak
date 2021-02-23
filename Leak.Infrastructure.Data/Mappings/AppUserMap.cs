@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Leak.Infrastructure.Data.Mappings
 {
-    class UrlMap : IEntityTypeConfiguration<Url>
+    class AppUserMap : IEntityTypeConfiguration<AppUser>
     {
-        public void Configure(EntityTypeBuilder<Url> builder)
+        public void Configure(EntityTypeBuilder<AppUser> builder)
         {
-            builder.Property(u => u.Path).IsRequired();
+
         }
     }
 }

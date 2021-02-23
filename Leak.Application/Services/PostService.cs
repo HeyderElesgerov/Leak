@@ -3,6 +3,7 @@ using FluentValidation.Results;
 using Leak.Application.Interfaces;
 using Leak.Application.ViewModels.Post;
 using Leak.Domain.Commands.Post;
+using Leak.Domain.Models;
 using Leak.Domain.Repository;
 using MediatR;
 using System;

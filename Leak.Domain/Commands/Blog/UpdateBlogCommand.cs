@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace Leak.Domain.Commands.Blog
 {
-    public class CreateBlogCommand : BlogCommand
+    public class UpdateBlogCommand : BlogCommand
     {
-        public CreateBlogCommand(string title) : base(0, title)
+        public UpdateBlogCommand(int id, string title) : base(id, title)
         {
         }
 
         public override bool IsValid()
         {
-            ValidationResult = new CreateBlogCommandValidator().Validate(this);
+            ValidationResult = new UpdateBlogCommandValidator().Validate(this);
             return base.IsValid();
         }
     }

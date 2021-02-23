@@ -2,9 +2,9 @@
 
 namespace Leak.Domain.Commands.Blog.Validations
 {
-    class CreateBlogCommandValidator : BlogCommandValidator<CreateBlogCommand>
+    class UpdateBlogCommandValidator : BlogCommandValidator<UpdateBlogCommand>
     {
-        public CreateBlogCommandValidator()
+        public UpdateBlogCommandValidator()
         {
             ValidateTitle();
         }

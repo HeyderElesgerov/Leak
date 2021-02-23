@@ -1,10 +1,7 @@
 ﻿using Leak.Application.Interfaces;
-using Leak.Application.Services;
 using Leak.Application.ViewModels.Blog;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Leak.UI.MVC.ApiControllers
@@ -26,9 +23,9 @@ namespace Leak.UI.MVC.ApiControllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(BlogViewModel blogViewModel)
+        public async Task<IActionResult> Add(CreateBlogViewModel createBlogViewModel)
         {
-            var validationResult = await _blogService.Add(blogViewModel);
+            var validationResult = await _blogService.Add(createBlogViewModel);
 
             if (validationResult.IsValid)
                 return Ok();
@@ -36,7 +33,7 @@ namespace Leak.UI.MVC.ApiControllers
             return BadRequest(validationResult.Errors);
         }
 
-        [HttpDelete("id")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var validationResult = await _blogService.Delete(id);

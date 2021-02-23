@@ -2,7 +2,6 @@
 using FluentValidation.Results;
 using Leak.Application.Interfaces;
 using Leak.Application.ViewModels.Blog;
-using Leak.Application.ViewModels.Category;
 using Leak.Domain.Commands.Blog;
 using Leak.Domain.Repository;
 using MediatR;
@@ -27,10 +26,10 @@ namespace Leak.Application.Services
             _blogRepository = blogRepository;
         }
 
-        public async Task<ValidationResult> Add(BlogViewModel blogViewModel)
+        public async Task<ValidationResult> Add(CreateBlogViewModel createBlogViewModel)
         {
             CreateBlogCommand createBlogCommand =
-                _mapper.Map<CreateBlogCommand>(blogViewModel);
+                _mapper.Map<CreateBlogCommand>(createBlogViewModel);
 
             return await _mediator.Send(createBlogCommand);
         }
@@ -45,7 +44,13 @@ namespace Leak.Application.Services
         public async Task<IEnumerable<BlogViewModel>> GetAll()
         {
             return _mapper.Map<IEnumerable<BlogViewModel>>(
-                await _blogRepository.GetAllIncluding(b => b.Url));
+                await _blogRepository.GetAll());
+        }
+
+        public async Task<ValidationResult> Update(UpdateBlogViewModel updateBlogViewModel)
+        {
+            UpdateBlogCommand updateBlogCommand = _mapper.Map<UpdateBlogCommand>(updateBlogViewModel);
+            return await _mediator.Send(updateBlogCommand);
         }
     }
 }

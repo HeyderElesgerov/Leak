@@ -2,14 +2,9 @@
 using Leak.Application.ViewModels.Blog;
 using Leak.Application.ViewModels.Category;
 using Leak.Application.ViewModels.Post;
-using Leak.Application.ViewModels.Url;
 using Leak.Domain.Commands.Blog;
 using Leak.Domain.Commands.Category;
 using Leak.Domain.Commands.Post;
-using Leak.Domain.Commands.Url;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Leak.Application.AutoMapper
 {
@@ -25,19 +20,11 @@ namespace Leak.Application.AutoMapper
             CreateMap<CategoryViewModel, DeleteCategoryCommand>()
                 .ConvertUsing(c => new DeleteCategoryCommand(c.Id));
 
-            //Url
-            CreateMap<UrlViewModel, CreateUrlCommand>()
-                .ConvertUsing(u => new CreateUrlCommand(u.Path));
-            CreateMap<UrlViewModel, UpdateUrlCommand>()
-                .ConvertUsing(u => new UpdateUrlCommand(u.Id, u.Path));
-            CreateMap<UrlViewModel, DeleteUrlCommand>()
-                .ConvertUsing(u => new DeleteUrlCommand(u.Id));
-
             //Blog
-            CreateMap<BlogViewModel, CreateBlogCommand>()
-                .ConvertUsing(b => new CreateBlogCommand(b.Title, b.UrlPath));
-            CreateMap<BlogViewModel, DeleteBlogCommand>()
-                .ConvertUsing(b => new DeleteBlogCommand(b.Id));
+            CreateMap<CreateBlogViewModel, CreateBlogCommand>()
+                .ConvertUsing(b => new CreateBlogCommand(b.Title));
+            CreateMap<UpdateBlogViewModel, UpdateBlogCommand>()
+                .ConvertUsing(b => new UpdateBlogCommand(b.Id, b.Title));
 
             //Post
             CreateMap<CreatePostViewModel, CreatePostCommand>();

@@ -50,6 +50,11 @@ namespace Leak.Application.Services
                 await _categoryRepository.GetAll());
         }
 
+        public CategoryViewModel GetCategory(int id)
+        {
+            return _mapper.Map<CategoryViewModel>(_categoryRepository.Find(id));
+        }
+
         public async Task<ValidationResult> Update(CategoryViewModel categoryViewModel)
         {
             UpdateCategoryCommand updateCategoryCommand = _mapper.Map<UpdateCategoryCommand>(categoryViewModel);

@@ -16,10 +16,6 @@ namespace Leak.Domain.Commands.Post
         public int CategoryId { get; set; }
         public bool IsActive { get; set; }
 
-        public PostCommand()
-        {
-        }
-
         public PostCommand(string title, string content, string headerPhotoName, int blogId, int categoryId, bool isActive)
         {
             Title = title;

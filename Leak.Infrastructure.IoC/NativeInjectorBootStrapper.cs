@@ -6,7 +6,6 @@ using Leak.Domain.Commands.Blog;
 using Leak.Domain.Commands.Category;
 using Leak.Domain.Commands.Post;
 using Leak.Domain.Commands.SpecialPostsSection;
-using Leak.Domain.Commands.Url;
 using Leak.Domain.Models;
 using Leak.Domain.Repository;
 using Leak.Domain.UnitOfWork;
@@ -42,7 +41,6 @@ namespace Leak.Infrastructure.IoC
             serviceCollection.AddScoped<IPostRepository, PostRepository>();
             serviceCollection.AddScoped<ISpecialPostsSectionRepository<InterestingPostSection>, SpecialPostsSectionRepository<InterestingPostSection>>();
             serviceCollection.AddScoped<ISpecialPostsSectionRepository<TrendPostSection>, SpecialPostsSectionRepository<TrendPostSection>>();
-            serviceCollection.AddScoped<IUrlRepository, UrlRepository>();
 
             return serviceCollection;
         }
@@ -54,7 +52,6 @@ namespace Leak.Infrastructure.IoC
             serviceCollection.AddScoped<IPostService, PostService>();
             serviceCollection.AddScoped<IPostsSectionService<InterestingPostSection>, PostsSectionService<InterestingPostSection>>();
             serviceCollection.AddScoped<IPostsSectionService<TrendPostSection>, PostsSectionService<TrendPostSection>>();
-            serviceCollection.AddScoped<IUrlService, UrlService>();
 
             return serviceCollection;
         }
@@ -91,10 +88,6 @@ namespace Leak.Infrastructure.IoC
                 .AddScoped<IRequestHandler<RemovePostFromPostsSectionCommand<InterestingPostSection>, ValidationResult>, PostsSectionCommandHandler<InterestingPostSection>>();
             serviceCollection
                 .AddScoped<IRequestHandler<RemovePostFromPostsSectionCommand<TrendPostSection>, ValidationResult>, PostsSectionCommandHandler<TrendPostSection>>();
-
-            serviceCollection.AddScoped<IRequestHandler<CreateUrlCommand, ValidationResult>, UrlCommandHandler>();
-            serviceCollection.AddScoped<IRequestHandler<UpdateUrlCommand, ValidationResult>, UrlCommandHandler>();
-            serviceCollection.AddScoped<IRequestHandler<DeleteUrlCommand, ValidationResult>, UrlCommandHandler>();
 
             return serviceCollection;
         }

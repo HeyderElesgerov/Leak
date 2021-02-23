@@ -10,7 +10,9 @@ namespace Leak.Application.Interfaces
     {
         Task<IEnumerable<BlogViewModel>> GetAll();
 
-        Task<ValidationResult> Add(BlogViewModel blogViewModel);
+        Task<ValidationResult> Add(CreateBlogViewModel createBlogViewModel);
+
+        Task<ValidationResult> Update(UpdateBlogViewModel updateBlogViewModel);
 
         Task<ValidationResult> Delete(int id);
     }

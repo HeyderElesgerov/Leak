@@ -14,5 +14,11 @@ namespace Leak.Infrastructure.Repository
         public BlogRepository(LeakDbContext leakDb) : base(leakDb)
         {
         }
+
+        public Task Update(Blog blog)
+        {
+            Entities.Update(blog);
+            return Task.CompletedTask;
+        }
     }
 }

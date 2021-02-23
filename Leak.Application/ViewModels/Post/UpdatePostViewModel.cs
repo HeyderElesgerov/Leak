@@ -16,10 +16,6 @@ namespace Leak.Application.ViewModels.Post
         public int CategoryId { get; set; }
         public bool IsActive { get; set; }
 
-        public UpdatePostViewModel()
-        {
-        }
-
         public UpdatePostViewModel(
             string title, string content, string headerPhotoName, int blogId, int categoryId, bool isActive)
         {
