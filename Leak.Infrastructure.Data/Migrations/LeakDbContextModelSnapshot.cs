@@ -147,7 +147,7 @@ namespace Leak.Infrastructure.Data.Migrations
                     b.Property<DateTime>("DatePublished")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("HeaderPhotoFileName")
+                    b.Property<string>("HeaderPhotoFilePath")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

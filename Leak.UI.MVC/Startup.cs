@@ -44,12 +44,15 @@ namespace Leak.UI.MVC
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapDefaultControllerRoute();
                 endpoints.MapControllers();
+                endpoints.MapDefaultControllerRoute();
+
             });
         }
     }

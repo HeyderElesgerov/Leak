@@ -132,6 +132,26 @@ namespace Leak.Infrastructure.Repository
             return await entitiesAsQueryable.FirstAsync(predicate);
         }
 
+        public async Task<TEntity> GetFirstOrDefault(Expression<Func<TEntity, bool>> predicate)
+        {
+            return await Entities.FirstOrDefaultAsync(predicate);
+        }
+
+        public async Task<TEntity> GetFirstOrDefaultIncluding(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, object>>[] includeProperties)
+        {
+            var entitiesAsQueryable = Entities.AsQueryable();
+
+            if (includeProperties != null)
+            {
+                foreach (var includeProp in includeProperties)
+                {
+                    entitiesAsQueryable = entitiesAsQueryable.Include(includeProp);
+                }
+            }
+
+            return await entitiesAsQueryable.FirstOrDefaultAsync(predicate);
+        }
+
         public Task<IEnumerable<TEntity>> GetWhere(Expression<Func<TEntity, bool>> predicate)
         {
             return Task.Run(() => Entities.Where(predicate).AsEnumerable());

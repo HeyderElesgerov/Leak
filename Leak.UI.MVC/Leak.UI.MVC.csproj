@@ -10,9 +10,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Dtos\" />
-    <Folder Include="Views\" />
+    <Folder Include="wwwroot\images\news\car\" />
+    <Folder Include="wwwroot\images\news\red-music\" />
+    <Folder Include="wwwroot\PostPhotos\" />
+    <Folder Include="wwwroot\site\images\news\car\" />
+    <Folder Include="wwwroot\site\images\news\red-music\" />
   </ItemGroup>
 
   <ItemGroup>

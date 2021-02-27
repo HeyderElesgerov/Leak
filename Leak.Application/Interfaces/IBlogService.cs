@@ -8,6 +8,8 @@ namespace Leak.Application.Interfaces
 {
     public interface IBlogService
     {
+        BlogViewModel GetById(int id);
+
         Task<IEnumerable<BlogViewModel>> GetAll();
 
         Task<ValidationResult> Add(CreateBlogViewModel createBlogViewModel);

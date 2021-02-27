@@ -8,7 +8,7 @@ namespace Leak.Application.ViewModels.Blog
 
         public string Title { get; private set; }
 
-        public readonly string Url;
+        public string Url { get; private set; }
 
         public BlogViewModel(int id, string title)
         {

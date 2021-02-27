@@ -45,7 +45,7 @@ namespace Leak.Domain.Commands.Post
             }
 
             var newPost = new Models.Post(
-                request.Title, request.Content, request.HeaderPhotoName, request.IsActive, blogId, categoryId);
+                request.Title, request.Content, request.HeaderPhotoPath, request.IsActive, blogId, categoryId);
 
             await _unitOfWork.PostRepository.Add(newPost);
             await _unitOfWork.Commit();
@@ -80,7 +80,6 @@ namespace Leak.Domain.Commands.Post
 
                 post.ChangeTitle(request.Title);
                 post.ChangeContent(request.Content);
-                post.ChangePhotoFileName(request.HeaderPhotoName);
                 post.BlogId = blogId;
                 post.CategoryId = categoryId;
 

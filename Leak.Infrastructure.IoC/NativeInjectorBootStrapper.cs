@@ -48,6 +48,7 @@ namespace Leak.Infrastructure.IoC
         public static IServiceCollection WithServices(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IBlogService, BlogService>();
+            serviceCollection.AddScoped<IFileService, FileService>();
             serviceCollection.AddScoped<ICategoryService, CategoryService>();
             serviceCollection.AddScoped<IPostService, PostService>();
             serviceCollection.AddScoped<IPostsSectionService<InterestingPostSection>, PostsSectionService<InterestingPostSection>>();
@@ -69,6 +70,7 @@ namespace Leak.Infrastructure.IoC
         public static IServiceCollection WithRequestHandlers(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IRequestHandler<CreateBlogCommand, ValidationResult>, BlogCommandHandler>();
+            serviceCollection.AddScoped<IRequestHandler<UpdateBlogCommand, ValidationResult>, BlogCommandHandler>();
             serviceCollection.AddScoped<IRequestHandler<DeleteBlogCommand, ValidationResult>, BlogCommandHandler>();
 
             serviceCollection.AddScoped<IRequestHandler<CreateCategoryCommand, ValidationResult>, CategoryCommandHandler>();

@@ -13,7 +13,7 @@ namespace Leak.Domain.Models
         {
             Title = title;
             Content = content;
-            HeaderPhotoFileName = photoFileName;
+            HeaderPhotoFilePath = photoFileName;
             IsActive = isActive;
             BlogId = blogId;
             CategoryId = categoryId;
@@ -24,7 +24,7 @@ namespace Leak.Domain.Models
 
         public string Content { get; set; }
 
-        public string HeaderPhotoFileName { get; set; }
+        public string HeaderPhotoFilePath { get; set; }
 
         public int BlogId { get; set; }
         public Blog Blog { get; set; }
@@ -46,11 +46,6 @@ namespace Leak.Domain.Models
         public void ChangeContent(string content)
         {
             Content = content;
-        }
-
-        public void ChangePhotoFileName(string photoFileName)
-        {
-            HeaderPhotoFileName = photoFileName;
         }
 
         public void IncreaseReadingCount()

@@ -13,4 +13,8 @@
     <ProjectReference Include="..\Leak.Domain\Leak.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\Section\" />
+  </ItemGroup>
+
 </Project>

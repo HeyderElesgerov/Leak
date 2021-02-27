@@ -6,8 +6,8 @@ namespace Leak.Domain.Commands.Post
     {
         public int Id { get; set; }
 
-        public UpdatePostCommand(int id, string title, string content, string headerPhotoName, int blogId, int categoryId, bool isActive)
-            : base(title, content, headerPhotoName, blogId, categoryId, isActive)
+        public UpdatePostCommand(int id, string title, string content, int blogId, int categoryId, bool isActive)
+            : base(title, content, blogId, categoryId, isActive)
         {
             Id = id;
         }

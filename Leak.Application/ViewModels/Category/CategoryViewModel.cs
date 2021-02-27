@@ -10,18 +10,10 @@ namespace Leak.Application.ViewModels.Category
 
         public string Title { get; set; }
 
-        public CategoryViewModel()
-        {
-        }
-
         public CategoryViewModel(int id, string title)
         {
             Id = id;
             Title = title;
-        }
-
-        public CategoryViewModel(string title) : this(default(int), title)
-        {
         }
     }
 }

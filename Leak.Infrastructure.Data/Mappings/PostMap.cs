@@ -10,7 +10,7 @@ namespace Leak.Infrastructure.Data.Mappings
         {
             builder.Property(p => p.Title).IsRequired();
             builder.Property(p => p.Content).IsRequired();
-            builder.Property(p => p.HeaderPhotoFileName).IsRequired();
+            builder.Property(p => p.HeaderPhotoFilePath).IsRequired();
         }
     }
 }

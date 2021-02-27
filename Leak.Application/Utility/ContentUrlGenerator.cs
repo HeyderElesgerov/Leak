@@ -10,7 +10,8 @@ namespace Leak.Application.Utility
     {
         public static string GenerateUrl(int contentId, string contentTitle)
         {
-            StringBuilder sb = new StringBuilder();
+            return $"{contentId}/{contentTitle}";
+           /* StringBuilder sb = new StringBuilder();
             sb.Append(contentId);
 
             string[] contentParts = contentTitle.Split(new char[] { ' ', ',', '.', '!', '-', '"', ';','(', ')'}, StringSplitOptions.RemoveEmptyEntries);
@@ -21,7 +22,7 @@ namespace Leak.Application.Utility
                 sb.Append(contentPart);
             }
 
-            return sb.ToString();
+            return sb.ToString();*/
         }
     }
 }

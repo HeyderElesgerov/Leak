@@ -1,0 +1,143 @@
+﻿@using Leak.Application.ViewModels.Utility;
+@using Leak.Application.ViewModels.Post;
+@model PaginatedElementsViewModel<PostViewModel>;
+<!-- breadcrumb -->
+<div class="breadcrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ol class="breadcrumb">
+                    <li>
+                        <i class="fas fa-home"></i>
+                        <a href="index.html">Baş Səhifə</a>
+                        <i class="fas fa-angle-right"></i>
+                    </li>
+                    <li><a href="category.html">Kategoriya</a></li>
+                    <li><i class="fas fa-angle-right"></i>Bölmə adı …</li>
+                </ol>
+            </div>
+        </div>
+        <!-- row end -->
+    </div>
+    <!-- container end -->
+</div>
+<!-- breadcrumb end -->
+
+<section class="main-content category-layout-1 pt-0">
+    <div class="container">
+        <div class="row ts-gutter-30">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="block-title">
+                            <span class="title-angle-shap"> Kategoriya :  Lorem </span>
+                        </h2>
+
+                        @if (Model.Elements.Count > 0)
+                        {
+                            <div class="post-block-style">
+                                <div class="post-thumb">
+                                    <a href="#">
+                                        <img class="img-fluid" src="@Model.Elements[0].HeaderPhotoPath" alt="">
+                                    </a>
+                                    <div class="grid-cat">
+                                        <a class="post-cat fashion" href="#">.....</a>
+                                        <a class="post-cat lifestyle" href="#">.....</a>
+                                    </div>
+                                </div>
+
+                                <div class="post-content">
+                                    <h2 class="post-title title-lg">
+                                        <a href="#">@Model.Elements[0].Title</a>
+                                    </h2>
+                                    <div class="post-meta mb-7">
+                                        <span class="post-date"><i class="fas fa-clock-o"></i> 20 Fevral, 2021</span>
+                                        <span class="view"><i class="fas fa-fire"></i> 354k</span>
+                                    </div>
+                                    <p>
+                                        @Model.Elements[0].Content
+                                    </p>
+                                </div>
+                                <!-- Post content end -->
+                            </div>
+                        }
+
+                    </div>
+                    <!-- col end -->
+                </div>
+                <!-- row end -->
+                <div class="gap-30"></div>
+                <div class="row ts-gutter-10">
+
+                    @for (int i = 1; i < Model.Elements.Count; i++)
+                    {
+                        <div class="col-md-6">
+                            <div class="post-block-style">
+                                <div class="post-thumb">
+                                    <a href="#">
+                                        <img class="img-fluid" src="@Model.Elements[i].HeaderPhotoPath" alt="">
+                                    </a>
+                                    <div class="grid-cat">
+                                        @if (Model.Elements[i].Category != null)
+                                        {
+                                            <a class="post-cat health" href="#">@Model.Elements[i].Category.Title</a>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="post-content">
+                                    <h2 class="post-title title-md">
+                                        <a href="#">@Model.Elements[i].Title</a>
+                                    </h2>
+                                    <div class="post-meta mb-7">
+                                        <span class="post-date"><i class="fas fa-clock-o"></i> 20 Fevral, 2021</span>
+                                    </div>
+                                    <p>@Model.Elements[i].Content </p>
+                                </div>
+                                <!-- Post content end -->
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!-- row end -->
+                <div class="gap-30 d-none d-md-block"></div>
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="ts-pagination">
+                            @for(int i = 1; i < Model.Count)
+                            <li><a href="#" class="active">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#"><i class="fas fa-angle-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- col-lg-8 -->
+            <div class="col-lg-4">
+                <div class="sidebar">
+                    @Html.PartialAsync("_Social").Result
+
+                    <div class="sidebar-widget ads-widget mt-20">
+                        <div class="ads-image">
+                            <a href="#">
+                                <img class="img-fluid" src="/images/banner-image/image2.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <!-- widget end -->
+
+                    @Html.PartialAsync("_InterestingPosts").Result
+                    <!-- widget end -->
+                </div>
+                <!-- widget end -->
+
+            </div>
+        </div>
+        <!-- sidebar col end -->
+    </div>
+    <!-- row end -->
+    </div>
+    <!-- container end -->
+</section>
+<!-- category-layout end -->

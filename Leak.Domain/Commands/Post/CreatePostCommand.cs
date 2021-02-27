@@ -4,9 +4,12 @@ namespace Leak.Domain.Commands.Post
 {
     public class CreatePostCommand : PostCommand
     {
-        public CreatePostCommand(string title, string content, string headerPhotoName, int blogId, int categoryId, bool isActive)
-            : base(title, content, headerPhotoName, blogId, categoryId, isActive)
+        public string HeaderPhotoPath { get; set; }
+
+        public CreatePostCommand(string title, string content, string headerPhotoPath, int blogId, int categoryId, bool isActive)
+            : base(title, content, blogId, categoryId, isActive)
         {
+            HeaderPhotoPath = headerPhotoPath;
         }
 
         public override bool IsValid()

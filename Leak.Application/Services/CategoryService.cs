@@ -29,18 +29,16 @@ namespace Leak.Application.Services
             _categoryRepository = categoryRepository;
         }
 
-        public async Task<ValidationResult> Add(CategoryViewModel categoryViewModel)
+        public async Task<ValidationResult> Add(CreateCategoryViewModel createCategoryViewModel)
         {
             CreateCategoryCommand createCategoryCommand = 
-                _mapper.Map<CreateCategoryCommand>(categoryViewModel);
-
+                _mapper.Map<CreateCategoryCommand>(createCategoryViewModel);
             return await _mediator.Send(createCategoryCommand);
         }
 
-        public async Task<ValidationResult> Delete(CategoryViewModel categoryViewModel)
+        public async Task<ValidationResult> Delete(int id)
         {
-            DeleteCategoryCommand deleteCategoryCommand = _mapper.Map<DeleteCategoryCommand>(categoryViewModel);
-
+            DeleteCategoryCommand deleteCategoryCommand = new DeleteCategoryCommand(id);
             return await _mediator.Send(deleteCategoryCommand);
         }
 
@@ -55,10 +53,9 @@ namespace Leak.Application.Services
             return _mapper.Map<CategoryViewModel>(_categoryRepository.Find(id));
         }
 
-        public async Task<ValidationResult> Update(CategoryViewModel categoryViewModel)
+        public async Task<ValidationResult> Update(UpdateCategoryViewModel updateCategoryViewModel)
         {
-            UpdateCategoryCommand updateCategoryCommand = _mapper.Map<UpdateCategoryCommand>(categoryViewModel);
-
+            UpdateCategoryCommand updateCategoryCommand = _mapper.Map<UpdateCategoryCommand>(updateCategoryViewModel);
             return await _mediator.Send(updateCategoryCommand);
         }
     }

@@ -26,6 +26,10 @@ namespace Leak.Domain.Core.Repository
 
         Task<TEntity> GetFirstIncluding(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, object>>[] includeProperties);
 
+        Task<TEntity> GetFirstOrDefault(Expression<Func<TEntity, bool>> predicate);
+
+        Task<TEntity> GetFirstOrDefaultIncluding(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, object>>[] includeProperties);
+        
         TEntity Find(TPrimaryKey id);
 
         Task<bool> Any(Expression<Func<TEntity, bool>> predicate);

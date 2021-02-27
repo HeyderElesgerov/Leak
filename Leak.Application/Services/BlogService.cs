@@ -47,6 +47,11 @@ namespace Leak.Application.Services
                 await _blogRepository.GetAll());
         }
 
+        public BlogViewModel GetById(int id)
+        {
+            return _mapper.Map<BlogViewModel>(_blogRepository.Find(id));
+        }
+
         public async Task<ValidationResult> Update(UpdateBlogViewModel updateBlogViewModel)
         {
             UpdateBlogCommand updateBlogCommand = _mapper.Map<UpdateBlogCommand>(updateBlogViewModel);
