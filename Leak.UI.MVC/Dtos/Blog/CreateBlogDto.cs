@@ -5,7 +5,7 @@ namespace Leak.UI.MVC.Dtos.Blog
 {
     public class CreateBlogDto
     {
-        [JsonProperty(propertyName: "Title"), Required]
+        [Required]
         public string Title { get; set; }
     }
 }

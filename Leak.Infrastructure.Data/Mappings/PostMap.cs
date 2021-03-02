@@ -11,6 +11,10 @@ namespace Leak.Infrastructure.Data.Mappings
             builder.Property(p => p.Title).IsRequired();
             builder.Property(p => p.Content).IsRequired();
             builder.Property(p => p.HeaderPhotoFilePath).IsRequired();
+
+            builder
+                .HasOne(p => p.Author)
+                .WithMany(a => a.Posts);
         }
     }
 }

@@ -45,16 +45,16 @@
                                 <div class="overlay-post-content">
                                     <div class="post-content">
                                         <div class="grid-category">
-                                            <a class="post-cat health" href="#">${post.category.title}</a>
-                                            <a class="post-cat lifestyle" href="#">${post.blog.title}</a>
+                                            <a class="post-cat health" href="/Category/${post.category.id}/${post.category.title}">${post.category.title}</a>
+                                            <a class="post-cat lifestyle" href="/Blog/${post.blog.id}/${post.blog.title}">${post.blog.title}</a>
                                         </div>
 
                                         <h2 class="post-title title-lg">
-                                            <a href="#">${post.title} </a>
+                                            <a href="/Post/${post.id}/${post.title}">${post.title} </a>
                                         </h2>
                                         <div class="post-meta">
                                             <ul>
-                                                <li><a href="#"><i class="fas fa-clock"></i> 20 July, 2020</a></li>
+                                                <li><a href="#"><i class="fas fa-clock"></i> ${post.publishDate}</a></li>
                                                 <li><a href="#" class="view"><i class="fas fa-fire"></i> 354k</a></li>
                                             </ul>
                                         </div>
@@ -70,13 +70,13 @@
                     <div class="col-md-12">
                         <div class="post-overaly-style post-sm overlay-primary  ml-8" style="background-image:url(${post.headerPhotoPath})">
                             <div class="post-content">
-                                <a class="post-cat health" href="#">${post.category.title}</a>
+                                <a class="post-cat health" href="/Category/${post.category.id}/${post.category.title}">${post.category.title}</a>
                                 <h2 class="post-title title-md">
-                                    <a href="#">${post.title}</a>
+                                    <a href="/Post/${post.id}/${post.title}">${post.title} </a>
                                 </h2>
                                 <div class="post-meta">
                                     <ul>
-                                        <li><a href="#"><i class="fas fa-clock"></i> 20 July, 2020</a></li>
+                                        <li><a href="#"><i class="fas fa-clock"></i> ${post.publishDate}</a></li>
                                         <li><a href="#" class="view"><i class="fas fa-fire"></i> 354k</a></li>
                                     </ul>
                                 </div>

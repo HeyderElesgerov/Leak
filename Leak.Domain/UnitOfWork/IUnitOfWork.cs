@@ -8,6 +8,7 @@ namespace Leak.Domain.UnitOfWork
     {
         IPostRepository PostRepository { get; }
         IBlogRepository BlogRepository { get; }
+        IAppUserRepository AppUserRepository { get; }
         ICategoryRepository CategoryRepository { get; }
         ISpecialPostsSectionRepository<Models.TrendPostSection> TrendingPostsSectionRepository { get; }
         ISpecialPostsSectionRepository<Models.InterestingPostSection> InterestingPostsSectionRepository { get; }

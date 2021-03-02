@@ -1,8 +1,10 @@
 ﻿using Leak.Application.Interfaces;
 using Leak.Application.ViewModels.Post;
+using Leak.Domain.Models;
 using Leak.UI.MVC.Dtos.Post;
 using Leak.UI.MVC.Utility;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using System.Threading.Tasks;
@@ -15,12 +17,14 @@ namespace Leak.UI.MVC.ApiControllers
     {
         private readonly IPostService _postService;
         private readonly IFileService _fileService;
+        private readonly UserManager<AppUser> _userManager;
         private readonly string PostPhotosFolder;
 
-        public PostsController(IPostService postService, IFileService fileService, IWebHostEnvironment webHostEnvironment)
+        public PostsController(IPostService postService, IFileService fileService, IWebHostEnvironment webHostEnvironment, UserManager<AppUser> userManager)
         {
             _postService = postService;
             _fileService = fileService;
+            _userManager = userManager;
             PostPhotosFolder = Path.Combine(webHostEnvironment.WebRootPath, "PostPhotos");
         }
 
@@ -30,6 +34,13 @@ namespace Leak.UI.MVC.ApiControllers
             try
             {
                 string createdFilePath = _fileService.CreateLocalFile(createPostDto.PhotoFile, PostPhotosFolder);
+
+                var user = await _userManager.GetUserAsync(User);
+
+                if (user == null)
+                    return BadRequest();
+
+                createPostDto.AuthorId = user.Id;
 
                 CreatePostViewModel createPostViewModel = CustomMapper.GetCreatePostViewModel(createPostDto, createdFilePath);
                 var result = await _postService.Add(createPostViewModel);

@@ -1,4 +1,6 @@
-﻿namespace Leak.Application.ViewModels.Post
+﻿using System;
+
+namespace Leak.Application.ViewModels.Post
 {
     public class CreatePostViewModel
     {
@@ -8,9 +10,10 @@
         public int BlogId { get; private set; }
         public int CategoryId { get; private set; }
         public bool IsActive { get; private set; }
+        public Guid AuthorId { get; set; }
 
         public CreatePostViewModel(
-            string title, string content, string headerPhotoPath, int blogId, int categoryId, bool isActive)
+            string title, string content, string headerPhotoPath, int blogId, int categoryId, bool isActive, Guid authorId)
         {
             Title = title;
             Content = content;
@@ -18,6 +21,7 @@
             BlogId = blogId;
             CategoryId = categoryId;
             IsActive = isActive;
+            AuthorId = authorId;
         }
     }
 }

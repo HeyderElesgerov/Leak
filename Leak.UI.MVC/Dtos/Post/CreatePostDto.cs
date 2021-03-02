@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Leak.UI.MVC.Dtos.Post
@@ -20,5 +21,7 @@ namespace Leak.UI.MVC.Dtos.Post
         public int CategoryId { get; set; }
 
         public bool IsActive { get; set; }
+
+        public Guid AuthorId { get; set; }
     }
 }

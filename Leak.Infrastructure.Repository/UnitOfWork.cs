@@ -11,6 +11,7 @@ namespace Leak.Infrastructure.Repository
         LeakDbContext _db;
         IPostRepository _postRepository;
         IBlogRepository _blogRepository;
+        IAppUserRepository _appUserRepository;
         ICategoryRepository _categoryRepository;
         ISpecialPostsSectionRepository<TrendPostSection> _trendingPostsSectionRepository;
         ISpecialPostsSectionRepository<InterestingPostSection> _interestingPostsSectionRepository;
@@ -23,16 +24,17 @@ namespace Leak.Infrastructure.Repository
             _categoryRepository = new CategoryRepository(db);
             _trendingPostsSectionRepository = new SpecialPostsSectionRepository<TrendPostSection>(db);
             _interestingPostsSectionRepository = new SpecialPostsSectionRepository<InterestingPostSection>(db);
+            _appUserRepository = new AppUserRepository(db);
         }
 
-        public LeakDbContext Db { get => _db; }
-        public IPostRepository PostRepository { get => _postRepository; }
-        public IBlogRepository BlogRepository { get => _blogRepository; }
-        public ICategoryRepository CategoryRepository { get => _categoryRepository; }
-        public ISpecialPostsSectionRepository<TrendPostSection> TrendingPostsSectionRepository
-        { get => _trendingPostsSectionRepository; }
-        public ISpecialPostsSectionRepository<InterestingPostSection> InterestingPostsSectionRepository
-        { get => _interestingPostsSectionRepository; }
+        public LeakDbContext Db => _db;
+        public IPostRepository PostRepository => _postRepository;
+        public IBlogRepository BlogRepository => _blogRepository;
+        public ICategoryRepository CategoryRepository => _categoryRepository;
+        public ISpecialPostsSectionRepository<TrendPostSection> TrendingPostsSectionRepository => _trendingPostsSectionRepository;
+        public ISpecialPostsSectionRepository<InterestingPostSection> InterestingPostsSectionRepository => _interestingPostsSectionRepository;
+
+        public IAppUserRepository AppUserRepository => _appUserRepository;
 
         public async Task Commit()
         {

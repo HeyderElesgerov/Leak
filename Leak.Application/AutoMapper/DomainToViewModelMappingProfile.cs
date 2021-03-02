@@ -17,7 +17,7 @@ namespace Leak.Application.AutoMapper
                 .ConstructUsing(b => new BlogViewModel(b.Id, b.Title));
 
             CreateMap<Post, PostViewModel>()
-                .ConstructUsing(p => new PostViewModel(p.Id, p.Title, p.Content, p.IsActive, p.HeaderPhotoFilePath, p.Blog, p.Category));
+                .ConstructUsing(p => new PostViewModel(p.Id, p.Title, p.Content, p.IsActive, p.HeaderPhotoFilePath, p.DatePublished, p.Blog, p.Category));
         }
     }
 }

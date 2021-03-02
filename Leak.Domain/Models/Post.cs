@@ -9,7 +9,7 @@ namespace Leak.Domain.Models
         {
         }
 
-        public Post(string title, string content, string photoFileName, bool isActive, int blogId, int categoryId)
+        public Post(string title, string content, string photoFileName, bool isActive, int blogId, int categoryId, AppUser appUser)
         {
             Title = title;
             Content = content;
@@ -18,6 +18,7 @@ namespace Leak.Domain.Models
             BlogId = blogId;
             CategoryId = categoryId;
             DatePublished = DateTime.Now;
+            Author = appUser;
         }
 
         public string Title { get; set; }
@@ -31,6 +32,8 @@ namespace Leak.Domain.Models
 
         public int CategoryId { get; set; }
         public Category Category { get; set; }
+
+        public AppUser Author { get; set; }
 
         public int ReadingCount { get; set; }
 

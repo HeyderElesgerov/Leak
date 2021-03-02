@@ -1,11 +1,13 @@
 ﻿using Leak.Domain.Models;
 using Leak.Infrastructure.Data.Mappings;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Leak.Infrastructure.Data.Context
 {
-    public class LeakDbContext : IdentityDbContext
+    public class LeakDbContext : IdentityDbContext<AppUser, IdentityRole<Guid>, Guid>
     {
         public LeakDbContext(DbContextOptions<LeakDbContext> dbContextOptions)
             : base(dbContextOptions)
@@ -19,7 +21,6 @@ namespace Leak.Infrastructure.Data.Context
             builder.ApplyConfiguration(new PostMap());
             builder.ApplyConfiguration(new PostSectionMap<InterestingPostSection>());
             builder.ApplyConfiguration(new PostSectionMap<TrendPostSection>());
-            builder.ApplyConfiguration(new AppUserMap());
 
             base.OnModelCreating(builder);
         }

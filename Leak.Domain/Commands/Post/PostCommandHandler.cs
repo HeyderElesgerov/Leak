@@ -2,10 +2,6 @@
 using Leak.Domain.Core.Command;
 using Leak.Domain.UnitOfWork;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -43,9 +39,16 @@ namespace Leak.Domain.Commands.Post
                 AddError("Category not found");
                 return ValidationResult;
             }
+            var appUser = _unitOfWork.AppUserRepository.FindById(request.AuthorId);
+
+            if (appUser == null)
+            {
+                AddError("User not found");
+                return ValidationResult;
+            }
 
             var newPost = new Models.Post(
-                request.Title, request.Content, request.HeaderPhotoPath, request.IsActive, blogId, categoryId);
+                request.Title, request.Content, request.HeaderPhotoPath, request.IsActive, blogId, categoryId, appUser);
 
             await _unitOfWork.PostRepository.Add(newPost);
             await _unitOfWork.Commit();
@@ -83,7 +86,7 @@ namespace Leak.Domain.Commands.Post
                 post.BlogId = blogId;
                 post.CategoryId = categoryId;
 
-                if(post.IsActive != request.IsActive)
+                if (post.IsActive != request.IsActive)
                 {
                     post.ChangeActivityState();
                 }

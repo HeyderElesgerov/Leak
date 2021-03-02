@@ -20,6 +20,13 @@ namespace Leak.Application.ViewModels.Utility
             Elements = elements;
             CurrentPage = page;
             CountPerPage = countPerPage;
+            MaxPage = (maxElementCount / countPerPage);
+
+            if(maxElementCount % countPerPage != 0)
+            {
+                if (maxElementCount != (MaxPage * countPerPage))
+                    MaxPage++;
+            }
         }
     }
 }

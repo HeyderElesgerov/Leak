@@ -37,6 +37,7 @@ namespace Leak.Infrastructure.IoC
         public static IServiceCollection WithRepositories(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IBlogRepository, BlogRepository>();
+            serviceCollection.AddScoped<IAppUserRepository, AppUserRepository>();
             serviceCollection.AddScoped<ICategoryRepository, CategoryRepository>();
             serviceCollection.AddScoped<IPostRepository, PostRepository>();
             serviceCollection.AddScoped<ISpecialPostsSectionRepository<InterestingPostSection>, SpecialPostsSectionRepository<InterestingPostSection>>();

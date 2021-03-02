@@ -37,7 +37,8 @@ namespace Leak.UI.MVC.Utility
                 photoPath,
                 createPostDto.BlogId,
                 createPostDto.CategoryId,
-                createPostDto.IsActive);
+                createPostDto.IsActive,
+                createPostDto.AuthorId);
         }
 
         public static UpdatePostViewModel GetUpdatePostViewModel(UpdatePostDto updatePostDto)
