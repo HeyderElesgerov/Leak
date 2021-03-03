@@ -1,6 +1,7 @@
 ﻿using Leak.Application.Interfaces;
 using Leak.Application.ViewModels.Post;
 using Leak.Application.ViewModels.Utility;
+using Leak.Domain.Models;
 using Leak.Domain.Repository;
 using Leak.UI.MVC.Dtos.Blog;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +26,7 @@ namespace Leak.UI.MVC.Controllers
         }
 
         [Route("~/Blog/{id}/{title}")]
+        [HttpGet]
         public async Task<IActionResult> Index(int id, string title, int page = 1)
         {
             var blog = _blogService.GetById(id);
@@ -36,7 +38,7 @@ namespace Leak.UI.MVC.Controllers
             ViewData["BlogId"] = blog.Id;
 
             int elementCount = 9;
-            var posts = _postService.GetPaginatedPosts(page, elementCount, p => p.BlogId == id, p => p.Category)
+            var posts = _postService.GetPaginatedPosts(page, elementCount, p => p.BlogId == id && p.IsActive, p => p.Category)
                                     .Select(p =>
                                         {
                                             if (p.Content.Length > 250)
@@ -52,6 +54,7 @@ namespace Leak.UI.MVC.Controllers
             return View(vm);
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
             return View(new CreateBlogDto());

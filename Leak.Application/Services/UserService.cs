@@ -1,5 +1,4 @@
-﻿using Leak.Application.ViewModels.AppUser;
-using Leak.Domain.Models;
+﻿using Leak.Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -21,14 +20,14 @@ namespace Leak.Application.Services
             _signInManager = signInManager;
         }
 
-        public async Task<SignInResult> LoginAsync(LoginViewModel loginViewModel)
-        {
-            AppUser appUser = await _userManager.FindByEmailAsync(loginViewModel.Email);
+        //public async Task<SignInResult> LoginAsync(LoginViewModel loginViewModel)
+        //{
+        //    AppUser appUser = await _userManager.FindByEmailAsync(loginViewModel.Email);
             
-            var result = await _signInManager.PasswordSignInAsync(
-                appUser, loginViewModel.Password, loginViewModel.RememberMe, false);
+        //    var result = await _signInManager.PasswordSignInAsync(
+        //        appUser, loginViewModel.Password, loginViewModel.RememberMe, false);
 
-            return result;
-        }
+        //    return result;
+        //}
     }
 }

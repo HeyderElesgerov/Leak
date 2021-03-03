@@ -16,7 +16,8 @@ namespace Leak.UI.MVC.ApiControllers
             _interestingPostSection = interestingPostSection;
         }
 
-        public async Task<IActionResult> Get()
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
         {
             return Ok(await _interestingPostSection.GetAllPosts(p => p.Post.Blog));
         }

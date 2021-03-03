@@ -110,6 +110,7 @@ namespace Leak.Domain.Commands.Post
             {
                 var post = _unitOfWork.PostRepository.Find(request.Id);
 
+                await _unitOfWork.SentPostRepository.DeleteWhere(p => p.ApprovedPostId == post.Id);
                 await _unitOfWork.PostRepository.Delete(post);
 
                 await _unitOfWork.Commit();

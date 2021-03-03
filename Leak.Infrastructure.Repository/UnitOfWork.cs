@@ -10,6 +10,7 @@ namespace Leak.Infrastructure.Repository
     {
         LeakDbContext _db;
         IPostRepository _postRepository;
+        ISentPostRepository _sentPostRepository;
         IBlogRepository _blogRepository;
         IAppUserRepository _appUserRepository;
         ICategoryRepository _categoryRepository;
@@ -20,6 +21,7 @@ namespace Leak.Infrastructure.Repository
         {
             _db = db;
             _postRepository = new PostRepository(db);
+            _sentPostRepository = new SentPostRepository(db);
             _blogRepository = new BlogRepository(db);
             _categoryRepository = new CategoryRepository(db);
             _trendingPostsSectionRepository = new SpecialPostsSectionRepository<TrendPostSection>(db);
@@ -29,6 +31,7 @@ namespace Leak.Infrastructure.Repository
 
         public LeakDbContext Db => _db;
         public IPostRepository PostRepository => _postRepository;
+        public ISentPostRepository SentPostRepository => _sentPostRepository;
         public IBlogRepository BlogRepository => _blogRepository;
         public ICategoryRepository CategoryRepository => _categoryRepository;
         public ISpecialPostsSectionRepository<TrendPostSection> TrendingPostsSectionRepository => _trendingPostsSectionRepository;

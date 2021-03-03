@@ -5,6 +5,7 @@ using Leak.Application.Services;
 using Leak.Domain.Commands.Blog;
 using Leak.Domain.Commands.Category;
 using Leak.Domain.Commands.Post;
+using Leak.Domain.Commands.SentPost;
 using Leak.Domain.Commands.SpecialPostsSection;
 using Leak.Domain.Models;
 using Leak.Domain.Repository;
@@ -40,6 +41,7 @@ namespace Leak.Infrastructure.IoC
             serviceCollection.AddScoped<IAppUserRepository, AppUserRepository>();
             serviceCollection.AddScoped<ICategoryRepository, CategoryRepository>();
             serviceCollection.AddScoped<IPostRepository, PostRepository>();
+            serviceCollection.AddScoped<ISentPostRepository, SentPostRepository>();
             serviceCollection.AddScoped<ISpecialPostsSectionRepository<InterestingPostSection>, SpecialPostsSectionRepository<InterestingPostSection>>();
             serviceCollection.AddScoped<ISpecialPostsSectionRepository<TrendPostSection>, SpecialPostsSectionRepository<TrendPostSection>>();
 
@@ -52,6 +54,7 @@ namespace Leak.Infrastructure.IoC
             serviceCollection.AddScoped<IFileService, FileService>();
             serviceCollection.AddScoped<ICategoryService, CategoryService>();
             serviceCollection.AddScoped<IPostService, PostService>();
+            serviceCollection.AddScoped<ISentPostService, SentPostService>();
             serviceCollection.AddScoped<IPostsSectionService<InterestingPostSection>, PostsSectionService<InterestingPostSection>>();
             serviceCollection.AddScoped<IPostsSectionService<TrendPostSection>, PostsSectionService<TrendPostSection>>();
 
@@ -81,6 +84,10 @@ namespace Leak.Infrastructure.IoC
             serviceCollection.AddScoped<IRequestHandler<CreatePostCommand, ValidationResult>, PostCommandHandler>();
             serviceCollection.AddScoped<IRequestHandler<UpdatePostCommand, ValidationResult>, PostCommandHandler>();
             serviceCollection.AddScoped<IRequestHandler<DeletePostCommand, ValidationResult>, PostCommandHandler>();
+
+            serviceCollection.AddScoped<IRequestHandler<CreateSentPostCommand, ValidationResult>, SentPostCommandHandler>();
+            serviceCollection.AddScoped<IRequestHandler<ApproveSentPostCommand, ValidationResult>, SentPostCommandHandler>();
+            serviceCollection.AddScoped<IRequestHandler<DeleteSentPostCommand, ValidationResult>, SentPostCommandHandler>();
 
             serviceCollection
                 .AddScoped<IRequestHandler<AddPostToPostsSectionCommand<InterestingPostSection>, ValidationResult>, PostsSectionCommandHandler<InterestingPostSection>>();

@@ -16,6 +16,7 @@ namespace Leak.UI.MVC.ApiControllers
             _trendPostSection = trendPostSection;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Get()
         {
             return Ok(await _trendPostSection.GetAllPosts(p => p.Post.Blog));

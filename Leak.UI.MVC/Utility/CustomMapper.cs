@@ -1,9 +1,11 @@
 ﻿using Leak.Application.ViewModels.Blog;
 using Leak.Application.ViewModels.Category;
 using Leak.Application.ViewModels.Post;
+using Leak.Application.ViewModels.SentPost;
 using Leak.UI.MVC.Dtos.Blog;
 using Leak.UI.MVC.Dtos.Category;
 using Leak.UI.MVC.Dtos.Post;
+using Leak.UI.MVC.Dtos.SentPost;
 
 namespace Leak.UI.MVC.Utility
 {
@@ -32,12 +34,23 @@ namespace Leak.UI.MVC.Utility
         public static CreatePostViewModel GetCreatePostViewModel(CreatePostDto createPostDto, string photoPath)
         {
             return new CreatePostViewModel(
-                createPostDto.Title, 
+                createPostDto.Title,
                 createPostDto.Content,
                 photoPath,
                 createPostDto.BlogId,
                 createPostDto.CategoryId,
                 createPostDto.IsActive,
+                createPostDto.AuthorId);
+        }
+
+        public static CreateSentPostViewModel GetCreateSentPostViewModel(CreateSentPostDto createPostDto, string photoPath)
+        {
+            return new CreateSentPostViewModel(
+                createPostDto.Title,
+                createPostDto.Content,
+                photoPath,
+                createPostDto.BlogId,
+                createPostDto.CategoryId,
                 createPostDto.AuthorId);
         }
 

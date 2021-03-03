@@ -19,6 +19,7 @@ namespace Leak.UI.MVC.ApiControllers
             _blogService = blogService;
         }
 
+        [HttpGet]
         public async Task<IEnumerable<BlogViewModel>> Get()
         {
             return await _blogService.GetAll();

@@ -7,6 +7,7 @@ namespace Leak.Domain.UnitOfWork
     public interface IUnitOfWork : IDisposable
     {
         IPostRepository PostRepository { get; }
+        ISentPostRepository SentPostRepository { get; }
         IBlogRepository BlogRepository { get; }
         IAppUserRepository AppUserRepository { get; }
         ICategoryRepository CategoryRepository { get; }

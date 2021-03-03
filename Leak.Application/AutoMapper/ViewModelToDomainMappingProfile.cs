@@ -2,9 +2,11 @@
 using Leak.Application.ViewModels.Blog;
 using Leak.Application.ViewModels.Category;
 using Leak.Application.ViewModels.Post;
+using Leak.Application.ViewModels.SentPost;
 using Leak.Domain.Commands.Blog;
 using Leak.Domain.Commands.Category;
 using Leak.Domain.Commands.Post;
+using Leak.Domain.Commands.SentPost;
 
 namespace Leak.Application.AutoMapper
 {
@@ -27,6 +29,9 @@ namespace Leak.Application.AutoMapper
             //Post
             CreateMap<CreatePostViewModel, CreatePostCommand>();
             CreateMap<UpdatePostViewModel, UpdatePostCommand>();
+
+            //SentPost
+            CreateMap<CreateSentPostViewModel, CreateSentPostCommand>();
         }
     }
 }

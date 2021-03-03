@@ -4,7 +4,7 @@ using Leak.UI.MVC.Dtos.PostSection;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace Leak.UI.MVC.ApiControllers
+namespace Leak.UI.MVC.ApiControllers.PostSection
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -13,12 +13,13 @@ namespace Leak.UI.MVC.ApiControllers
     {
         private IPostsSectionService<TSection> _sectionService;
 
-        public SpecialPostsSectionsController(IPostsSectionService<TSection> sectionService)
+        protected SpecialPostsSectionsController(IPostsSectionService<TSection> sectionService)
         {
             _sectionService = sectionService;
         }
 
-        public async Task<IActionResult> Get()
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
         {
             return Ok(await _sectionService.GetAllPosts(s => s.Post));
         }
