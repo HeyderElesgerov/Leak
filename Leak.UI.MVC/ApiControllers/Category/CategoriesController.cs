@@ -1,5 +1,4 @@
 ﻿using Leak.Application.Interfaces;
-using Leak.Application.ViewModels.Category;
 using Leak.UI.MVC.Dtos.Category;
 using Leak.UI.MVC.Utility;
 using Microsoft.AspNetCore.Mvc;
@@ -36,7 +35,7 @@ namespace Leak.UI.MVC.ApiControllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromForm]CreateCategoryDto createcategorydto)
+        public async Task<IActionResult> Add([FromForm] CreateCategoryDto createcategorydto)
         {
             var createCategoryViewModel = CustomMapper.GetCreateCategoryViewModel(createcategorydto);
             var validationResult = await _categoryService.Add(createCategoryViewModel);

@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leak.Infrastructure.IoC", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leak.UI.MVC", "Leak.UI.MVC\Leak.UI.MVC.csproj", "{30ADDB90-F708-4FF9-8075-529FA2F86158}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leak.Infrastructure.Repository", "Leak.Infrastructure.Repository\Leak.Infrastructure.Repository.csproj", "{3D0FF1F7-9A68-4A08-9E7E-1EAB3EDB3E2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leak.Infrastructure.Repository", "Leak.Infrastructure.Repository\Leak.Infrastructure.Repository.csproj", "{3D0FF1F7-9A68-4A08-9E7E-1EAB3EDB3E2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

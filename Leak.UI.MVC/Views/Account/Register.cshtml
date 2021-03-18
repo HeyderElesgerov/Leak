@@ -1,0 +1,30 @@
+﻿@model Leak.UI.MVC.Model.SignUpModel;
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.ValidationSummary(true)
+    </div>
+
+    <div>
+        <b>Full Name</b>
+        @Html.EditorFor(m => m.FullName)
+        <span class="is-invalid">@Html.ValidationMessageFor(m => m.FullName)</span>
+    </div>
+
+    <div>
+        <b>Email</b>
+        @Html.EditorFor(m => m.Email)
+        <span class="is-invalid">@Html.ValidationMessageFor(m => m.Email)</span>
+    </div>
+
+    <div>
+        <b>Password</b>
+        @Html.EditorFor(m => m.Password)
+        <span class="is-invalid">@Html.ValidationMessageFor(m => m.Password)</span>
+    </div>
+
+    <div>
+        <input type="submit" value="Register" />
+    </div>
+}

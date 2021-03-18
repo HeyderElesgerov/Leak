@@ -11,7 +11,9 @@ namespace Leak.Domain.Models
     public class AppUser : IdentityUser<Guid>
     {
         public string PhotoFileName { get; set; }
-        
+
+        public string FullName { get; set; }
+
         public List<Post> Posts { get; set; }
     }
 }

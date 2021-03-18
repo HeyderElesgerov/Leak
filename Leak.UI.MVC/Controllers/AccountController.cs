@@ -20,13 +20,6 @@ namespace Leak.UI.MVC.Controllers
             _userManager = userManager;
         }
 
-        [Authorize]
-        public IActionResult Index()
-        {
-            
-            return View();
-        }
-
         public IActionResult Login()
         {
             return View(new SignInModel());
@@ -51,16 +44,7 @@ namespace Leak.UI.MVC.Controllers
 
                     if (signInResult.Succeeded)
                     {
-                        if(await _userManager.IsInRoleAsync(user, UserRole.Admin))
-                        {
-
-                        }
-                        else
-                        {
-
-                        }
-
-                        throw new NotImplementedException("You have logged in, but next page is not implemented");
+                        return RedirectToAction("Index", "User");
                     }
 
                     ModelState.AddModelError("", "Email or password is incorrect");
@@ -89,9 +73,7 @@ namespace Leak.UI.MVC.Controllers
                 IdentityResult signUpResult = await _userManager.CreateAsync(newUser, signUpModel.Password);
 
                 if (signUpResult.Succeeded)
-                {
-                    throw new NotImplementedException("You have registered successfully, but next page is not implemented");
-                }
+                    return RedirectToAction(nameof(RegisterSuccessful), "Account");
 
                 foreach (var error in signUpResult.Errors)
                 {
@@ -100,6 +82,11 @@ namespace Leak.UI.MVC.Controllers
             }
 
             return View(signUpModel);
+        }
+
+        public IActionResult RegisterSuccessful()
+        {
+            return View();
         }
 
         [HttpPost]
