@@ -1,0 +1,31 @@
+﻿@model Leak.UI.MVC.Model.SignInModel;
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.ValidationSummary(true)
+    </div>
+    <div>
+        <b>Email</b>
+        @Html.EditorFor(m => m.Email)
+        <span class="is-invalid">@Html.ValidationMessageFor(m=>m.Email)</span>
+    </div>
+
+    <div>
+        <b>Password</b>
+        @Html.EditorFor(m => m.Password)
+        <span class="is-invalid">@Html.ValidationMessageFor(m => m.Password)</span>
+    </div>
+
+    <div>
+        <b>Remember Me</b>
+        @Html.CheckBoxFor(m => m.RememberMe)
+    </div>
+
+    <div>
+        <input type="submit" value="Login"/>
+        <p>
+            <a href="/Account/Register">Sign Up</a>
+        </p>
+    </div>
+}

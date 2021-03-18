@@ -1,25 +1,21 @@
-﻿using Leak.Domain.Commands.Url.Validations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentValidation;
 
 namespace Leak.Domain.Commands.Post.Validations
 {
-    class CreatePostCommandValidator : PostCommandValidator
+    class CreatePostCommandValidator : PostCommandValidator<CreatePostCommand>
     {
         public CreatePostCommandValidator()
         {
             ValidateTitle();
             ValidateContent();
             ValidatePhotoFileName();
-            ValidateUrlPath();
         }
 
-        public void ValidateUrlPath()
+        public void ValidatePhotoFileName()
         {
-            new CreateUrlCommandValidator().ValidatePath();
+            RuleFor(p => p.HeaderPhotoPath)
+                .NotEmpty().WithMessage("Image is required")
+                .NotNull().WithMessage("Image is required");
         }
     }
 }

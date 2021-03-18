@@ -11,12 +11,14 @@ namespace Leak.Application.Interfaces
 {
     public interface ICategoryService
     {
+        CategoryViewModel GetCategory(int id);
+
         Task<IEnumerable<CategoryViewModel>> GetAllCategories();
 
-        Task<ValidationResult> Add(CategoryViewModel categoryViewModel);
+        Task<ValidationResult> Add(CreateCategoryViewModel createCategoryViewModel);
 
-        Task<ValidationResult> Delete(CategoryViewModel categoryViewModel);
+        Task<ValidationResult> Delete(int id);
 
-        Task<ValidationResult> Update(CategoryViewModel categoryViewModel);
+        Task<ValidationResult> Update(UpdateCategoryViewModel updateCategoryViewModel);
     }
 }

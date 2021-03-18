@@ -1,0 +1,63 @@
+﻿<div class="sidebar-widget featured-tab post-tab">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link animated active fadeIn">
+                <span class="tab-head">
+                    <span class="tab-text-title">Maraqlı</span>
+                </span>
+            </a>
+        </li>
+    </ul>
+    <div class="gap-50 d-none d-md-block"></div>
+    <div class="row">
+        <div class="col-12">
+            <div class="tab-content">
+                <div class="tab-pane active animated fadeInRight">
+                    <div class="list-post-block" >
+                        <ul class="list-post" id="interestingPostsSection">
+                        </ul>
+                        <!-- List post end -->
+                    </div>
+                </div>
+                <!-- Tab pane 2 end -->
+            </div>
+            <!-- tab content -->
+        </div>
+    </div>
+</div>
+
+<script>
+    let interestingPostsContainer = document.getElementById('interestingPostsSection')
+
+    fetch('/api/InterestingPosts')
+        .then(resp => resp.json())
+        .then(posts => {
+            for (let post of posts) {
+                interestingPostsContainer.innerHTML += `
+                             <li>
+                                <div class="post-block-style media">
+                                    <div class="post-thumb">
+                                        <a href="/Post/${post.id}/${post.title}">
+                                            <img class="img-fluid" src="/${post.headerPhotoPath}" alt="${post.title}">
+                                        </a>
+                                    </div>
+                                    <!-- Post thumb end -->
+
+                                    <div class="post-content media-body">
+                                        <div class="grid-category">
+                                            <a class="post-cat sports-color" href="/Blog/${post.blog.id}/${post.blog.title}">${post.blog.title}</a>
+                                        </div>
+                                        <h2 class="post-title">
+                                            <a href="/Post/${post.id}/${post.title}">${post.title}</a>
+                                        </h2>
+                                        <div class="post-meta mb-7">
+                                            <span class="post-date"><i class="fas fa-clock-o"></i> ${post.publishDate}</span>
+                                        </div>
+                                    </div>
+                                    <!-- Post content end -->
+                                </div>
+                                <!-- Post block style end -->
+                            </li>`;
+            }
+        });
+</script>

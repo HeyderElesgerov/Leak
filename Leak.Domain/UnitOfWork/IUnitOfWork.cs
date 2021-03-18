@@ -1,20 +1,18 @@
 ﻿using Leak.Domain.Repository;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Leak.Domain.UnitOfWork
 {
     public interface IUnitOfWork : IDisposable
     {
-        IPostRepository PostRepository { get; set; }
-        IBlogRepository BlogRepository { get; set; }
-        ICategoryRepository CategoryRepository { get; set; }
-        IUrlRepository UrlRepository { get; set; }
-        ISpecialPostsSectionRepository<Models.TrendPostSection> TrendingPostsSectionRepository { get; set; }
-        ISpecialPostsSectionRepository<Models.InterestingPostSection> InterestingPostsSectionRepository { get; set; }
+        IPostRepository PostRepository { get; }
+        ISentPostRepository SentPostRepository { get; }
+        IBlogRepository BlogRepository { get; }
+        IAppUserRepository AppUserRepository { get; }
+        ICategoryRepository CategoryRepository { get; }
+        ISpecialPostsSectionRepository<Models.TrendPostSection> TrendingPostsSectionRepository { get; }
+        ISpecialPostsSectionRepository<Models.InterestingPostSection> InterestingPostsSectionRepository { get; }
 
         Task Commit();
     }

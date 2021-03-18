@@ -10,5 +10,6 @@ namespace Leak.Domain.Repository
 {
     public interface IBlogRepository : IRepository<Blog, int>
     {
+        Task Update(Blog blog);
     }
 }

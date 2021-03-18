@@ -11,20 +11,14 @@ namespace Leak.Domain.Commands.Post
     {
         public string Title { get; set; }
         public string Content { get; set; }
-        public string HeaderPhotoName { get; set; }
         public int BlogId { get; set; }
         public int CategoryId { get; set; }
         public bool IsActive { get; set; }
 
-        public PostCommand()
-        {
-        }
-
-        public PostCommand(string title, string content, string headerPhotoName, int blogId, int categoryId, bool isActive)
+        public PostCommand(string title, string content, int blogId, int categoryId, bool isActive)
         {
             Title = title;
             Content = content;
-            HeaderPhotoName = headerPhotoName;
             BlogId = blogId;
             CategoryId = categoryId;
             IsActive = isActive;

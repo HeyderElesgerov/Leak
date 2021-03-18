@@ -1,0 +1,74 @@
+﻿<section class="trending-slider pb-0">
+    <div class="container">
+        <div class="ts-grid-box">
+            <h2 class="block-title">
+                <span class="title-angle-shap"> Trend</span>
+            </h2>
+            <div class="owl-carousel dot-style2" id="trending-slider">
+                <div class="item post-overaly-style post-md" style="background-image:url(images/news/health/image1.png)">
+                    <a href="#" class="image-link">&nbsp;</a>
+                    <div class="overlay-post-content">
+                        <div class="post-content">
+                            <div class="grid-category">
+                                <a class="post-cat sports" href="#">İdman</a>
+                            </div>
+
+                            <h2 class="post-title">
+                                <a href="#">Lorem ipsum Lorem ipsum Lorem ipsum  </a>
+                            </h2>
+                            <div class="post-meta">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 1 end -->
+                <div class="item post-overaly-style post-md" style="background-image:url(images/news/tech/image5.png)">
+                    <a href="#" class="image-link">&nbsp;</a>
+                    <div class="overlay-post-content">
+                        <div class="post-content">
+                            <div class="grid-category">
+                                <a class="post-cat tech" href="#">Texno</a>
+                            </div>
+
+                            <h2 class="post-title">
+                                <a href="#">Lorem ipsum Lorem ipsum Lorem ipsum </a>
+                            </h2>
+                            <div class="post-meta">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 1 end -->
+                <div class="item post-overaly-style post-md" style="background-image:url(images/news/lifestyle/image3.png)">
+                    <a href="#" class="image-link">&nbsp;</a>
+                    <div class="overlay-post-content">
+                        <div class="post-content">
+                            <div class="grid-category">
+                                <a class="post-cat travel" href="#">Səyahət</a>
+                            </div>
+
+                            <h2 class="post-title">
+                                <a href="#">Lorem ipsum Lorem ipsum Lorem ipsum </a>
+                            </h2>
+                            <div class="post-meta">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 1 end -->
+                <!-- Item 1 end -->
+            </div>
+            <!-- most-populers end-->
+        </div>
+        <!-- ts-populer-post-box end-->
+    </div>
+    <!-- container end-->
+</section>
+
+<script>
+    let trendingPostsSlider = document.getElementById('trending-slider');
+
+    fetch('/api/TrendPosts')
+        .then(resp => resp.json())
+        .then(posts => console.log(posts));
+</script>

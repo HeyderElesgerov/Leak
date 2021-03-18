@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 
 namespace Leak.Application.Interfaces
 {
-    interface IBlogService
+    public interface IBlogService
     {
+        BlogViewModel GetById(int id);
+
         Task<IEnumerable<BlogViewModel>> GetAll();
 
-        Task<ValidationResult> Add(BlogViewModel blogViewModel);
+        Task<ValidationResult> Add(CreateBlogViewModel createBlogViewModel);
 
-        Task<ValidationResult> Delete(BlogViewModel blogViewModel);
+        Task<ValidationResult> Update(UpdateBlogViewModel updateBlogViewModel);
+
+        Task<ValidationResult> Delete(int id);
     }
 }

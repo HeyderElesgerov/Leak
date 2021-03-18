@@ -2,10 +2,6 @@
 using Leak.Domain.Core.Command;
 using Leak.Domain.UnitOfWork;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -43,10 +39,16 @@ namespace Leak.Domain.Commands.Post
                 AddError("Category not found");
                 return ValidationResult;
             }
+            var appUser = _unitOfWork.AppUserRepository.FindById(request.AuthorId);
+
+            if (appUser == null)
+            {
+                AddError("User not found");
+                return ValidationResult;
+            }
 
             var newPost = new Models.Post(
-                request.Title, request.Content, request.HeaderPhotoName,
-                new Models.Url(request.UrlPath), request.IsActive, blogId, categoryId);
+                request.Title, request.Content, request.HeaderPhotoPath, request.IsActive, blogId, categoryId, appUser);
 
             await _unitOfWork.PostRepository.Add(newPost);
             await _unitOfWork.Commit();
@@ -81,9 +83,13 @@ namespace Leak.Domain.Commands.Post
 
                 post.ChangeTitle(request.Title);
                 post.ChangeContent(request.Content);
-                post.ChangePhotoFileName(request.HeaderPhotoName);
                 post.BlogId = blogId;
                 post.CategoryId = categoryId;
+
+                if (post.IsActive != request.IsActive)
+                {
+                    post.ChangeActivityState();
+                }
 
                 await _unitOfWork.Commit();
             }
@@ -102,13 +108,10 @@ namespace Leak.Domain.Commands.Post
 
             if (PostExists(request.Id))
             {
-                var post = await _unitOfWork.PostRepository
-                                            .GetFirstIncluding(request.Id, p => p.Url);
+                var post = _unitOfWork.PostRepository.Find(request.Id);
 
+                await _unitOfWork.SentPostRepository.DeleteWhere(p => p.ApprovedPostId == post.Id);
                 await _unitOfWork.PostRepository.Delete(post);
-
-                if (post.Url != null)
-                    await _unitOfWork.UrlRepository.Delete(post.Url);
 
                 await _unitOfWork.Commit();
             }

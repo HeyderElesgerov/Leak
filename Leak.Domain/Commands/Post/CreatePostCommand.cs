@@ -1,26 +1,19 @@
 ﻿using Leak.Domain.Commands.Post.Validations;
-using Leak.Domain.Core.Command;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Leak.Domain.Commands.Post
 {
     public class CreatePostCommand : PostCommand
     {
-        public CreatePostCommand()
-        {
-        }
+        public string HeaderPhotoPath { get; set; }
+        public Guid AuthorId { get; set; }
 
-        public CreatePostCommand(string title, string content, string headerPhotoName, string urlPath, int blogId, int categoryId, bool isActive) 
-            : base(title, content, headerPhotoName, blogId, categoryId, isActive)
+        public CreatePostCommand(string title, string content, string headerPhotoPath, int blogId, int categoryId, bool isActive, Guid authorId)
+            : base(title, content, blogId, categoryId, isActive)
         {
-            UrlPath = urlPath;
+            HeaderPhotoPath = headerPhotoPath;
+            AuthorId = authorId;
         }
-
-        public string UrlPath { get; set; }
 
         public override bool IsValid()
         {

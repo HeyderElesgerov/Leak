@@ -1,12 +1,9 @@
 ﻿using AutoMapper;
 using Leak.Application.ViewModels.Blog;
 using Leak.Application.ViewModels.Category;
-using Leak.Application.ViewModels.Url;
+using Leak.Application.ViewModels.Post;
+using Leak.Application.ViewModels.SentPost;
 using Leak.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Text;
 
 namespace Leak.Application.AutoMapper
 {
@@ -17,12 +14,14 @@ namespace Leak.Application.AutoMapper
             CreateMap<Category, CategoryViewModel>()
                 .ConstructUsing(c => new CategoryViewModel(c.Id, c.Title));
 
-            CreateMap<Url, UrlViewModel>()
-                .ConstructUsing(u => new UrlViewModel(u.Id, u.Path));
-
             CreateMap<Blog, BlogViewModel>()
-                .ConstructUsing(b => new BlogViewModel(
-                    b.Id, b.Title, new UrlViewModel(b.UrlId, b.Url.Path)));
+                .ConstructUsing(b => new BlogViewModel(b.Id, b.Title));
+
+            CreateMap<Post, PostViewModel>()
+                .ConstructUsing(p => new PostViewModel(p.Id, p.Title, p.Content, p.IsActive, p.HeaderPhotoFilePath, p.DatePublished, p.Blog, p.Category));
+
+            CreateMap<SentPost, SentPostViewModel>()
+               .ConstructUsing(p => new SentPostViewModel(p.Id, p.Title, p.Content, p.HeaderPhotoFilePath, p.SentDate, p.Blog, p.Category, p.ApprovedPost));
         }
     }
 }

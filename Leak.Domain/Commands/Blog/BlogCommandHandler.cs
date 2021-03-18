@@ -14,7 +14,8 @@ namespace Leak.Domain.Commands.Blog
     public class BlogCommandHandler :
         CommandHandler,
         IRequestHandler<CreateBlogCommand, ValidationResult>,
-        IRequestHandler<DeleteBlogCommand, ValidationResult>
+        IRequestHandler<DeleteBlogCommand, ValidationResult>,
+        IRequestHandler<UpdateBlogCommand, ValidationResult>
     {
         private readonly IBlogRepository _blogRepository;
 
@@ -29,7 +30,7 @@ namespace Leak.Domain.Commands.Blog
                 return request.ValidationResult;
 
             Models.Blog blog = 
-                new Models.Blog(request.Title, new Models.Url(request.UrlPath));
+                new Models.Blog(request.Title);
 
             await _blogRepository.Add(blog);
             await _blogRepository.Commit();
@@ -49,6 +50,27 @@ namespace Leak.Domain.Commands.Blog
             else
             {
                 await _blogRepository.Delete(blog);
+                await _blogRepository.Commit();
+            }
+
+            return ValidationResult;
+        }
+
+        public async Task<ValidationResult> Handle(UpdateBlogCommand request, CancellationToken cancellationToken)
+        {
+            if (!request.IsValid())
+                return request.ValidationResult;
+
+            Models.Blog existingBlog = _blogRepository.Find(request.Id);
+
+            if(existingBlog == null)
+                AddError("Blog not found");
+            else
+            {
+                if(request.Title != existingBlog.Title)
+                    existingBlog.ChangeTitle(request.Title);
+
+                await _blogRepository.Update(existingBlog);
                 await _blogRepository.Commit();
             }
 

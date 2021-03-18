@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>@ViewBag.Title</title>
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--Favicon-->
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+    <!-- CSS
+    ================================================== -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- IconFont -->
+    <link rel="stylesheet" href="/css/iconfonts.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+    <!-- magnific -->
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+
+
+    <link rel="stylesheet" href="/css/animate.css">
+
+    <!-- Template styles-->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Responsive styles-->
+    <link rel="stylesheet" href="/css/responsive.css">
+
+    <!-- Colorbox -->
+    <link rel="stylesheet" href="/css/colorbox.css">
+</head>
+<body>
+    <header id="header" class="header">
+        @await Html.PartialAsync("_Header")
+    </header>
+
+    @RenderBody()
+
+    <script src="/js/jquery.js"></script>
+    <!-- Popper Jquery -->
+    <script src="/js/popper.min.js"></script>
+    <!-- Bootstrap jQuery -->
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- magnific-popup -->
+    <script src="/js/jquery.magnific-popup.min.js"></script>
+    <!-- Owl Carousel -->
+    <script src="/js/owl.carousel.min.js"></script>
+    <!-- Color box -->
+    <script src="/js/jquery.colorbox.js"></script>
+    <!-- Template custom -->
+    <script src="/js/custom.js"></script>
+</body>
+</html>

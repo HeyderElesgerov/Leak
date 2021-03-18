@@ -15,9 +15,5 @@ namespace Leak.Application.ViewModels.Category
             Id = id;
             Title = title;
         }
-
-        public CategoryViewModel(string title) : this(default(int), title)
-        {
-        }
     }
 }

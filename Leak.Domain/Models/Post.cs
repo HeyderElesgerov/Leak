@@ -1,7 +1,5 @@
 ﻿using Leak.Domain.Core.Entity;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Leak.Domain.Models
 {
@@ -11,32 +9,31 @@ namespace Leak.Domain.Models
         {
         }
 
-        public Post(string title, string content, string photoFileName, Url url, bool isActive, int blogId, int categoryId)
+        public Post(string title, string content, string photoFileName, bool isActive, int blogId, int categoryId, AppUser appUser)
         {
             Title = title;
             Content = content;
-            HeaderPhotoFileName = photoFileName;
-            Url = url;
+            HeaderPhotoFilePath = photoFileName;
             IsActive = isActive;
             BlogId = blogId;
             CategoryId = categoryId;
             DatePublished = DateTime.Now;
+            Author = appUser;
         }
-
-        public int UrlId { get; set; }
-        public Url Url { get; set; }
 
         public string Title { get; set; }
 
         public string Content { get; set; }
 
-        public string HeaderPhotoFileName { get; set; }
+        public string HeaderPhotoFilePath { get; set; }
 
         public int BlogId { get; set; }
         public Blog Blog { get; set; }
 
         public int CategoryId { get; set; }
         public Category Category { get; set; }
+
+        public AppUser Author { get; set; }
 
         public int ReadingCount { get; set; }
 
@@ -52,11 +49,6 @@ namespace Leak.Domain.Models
         public void ChangeContent(string content)
         {
             Content = content;
-        }
-
-        public void ChangePhotoFileName(string photoFileName)
-        {
-            HeaderPhotoFileName = photoFileName;
         }
 
         public void IncreaseReadingCount()
